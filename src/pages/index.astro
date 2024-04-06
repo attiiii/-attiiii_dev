@@ -2,8 +2,28 @@
 import Layout from "@layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <main>
-    <h1>Welcome to Astro</h1>
+<Layout title="@attiiii_dev">
+  <main class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20">
+    <section class="flex">
+      <div class="flex flex-1 flex-col items-center justify-center">
+        <h1 class="text-center text-4xl font-bold">Welcome to @attiiii_dev</h1>
+        <div class="my-6 leading-[1.9] text-gray-400">
+          <p>個人運用のポートフォリオ＋ブログサイトです。</p>
+          <p>著者についてはプロフィールをご確認ください。</p>
+        </div>
+        <a href="/profile">
+          <div
+            class="flex h-[2.25rem] items-center rounded-full bg-slate-800 px-4 font-bold text-white"
+          >
+            Profile へ移動
+          </div>
+        </a>
+      </div>
+      <div class="flex flex-1 justify-center">
+        <div class="max-w-[420px]">
+          <img src="/images/laptop.jpg" alt="サイトイメージ" class="w-full" />
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
