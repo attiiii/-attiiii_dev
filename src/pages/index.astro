@@ -1,9 +1,14 @@
 ---
+import PortfolioCard from "@components/card/PortfolioCard.astro";
 import Layout from "@layouts/Layout.astro";
+import SectionLayout from "@layouts/SectionLayout.astro";
+import { PORTFOLIOS } from "@/constants";
 ---
 
 <Layout title="@attiiii_dev">
-  <main class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20">
+  <main
+    class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20 [&>*:not(:last-child)]:mb-12"
+  >
     <section class="flex">
       <div class="flex flex-1 flex-col items-center justify-center">
         <h1 class="text-center text-4xl font-bold">Welcome to @attiiii_dev</h1>
@@ -25,5 +30,10 @@ import Layout from "@layouts/Layout.astro";
         </div>
       </div>
     </section>
+    <SectionLayout title="Portfolio">
+      <div class="grid grid-cols-2 gap-5">
+        {PORTFOLIOS.map((portfolio) => <PortfolioCard portfolio={portfolio} />)}
+      </div>
+    </SectionLayout>
   </main>
 </Layout>

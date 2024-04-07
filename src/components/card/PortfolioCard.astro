@@ -1,0 +1,65 @@
+---
+import type { Portfolio } from "@/types";
+
+interface Props {
+  portfolio: Portfolio;
+}
+
+const { title, description, url, skills, links } = Astro.props.portfolio;
+
+const hasLinks = Object.keys(links || {}).length > 0;
+---
+
+<div class="card overflow-hidden rounded shadow-lg">
+  <a href={url} target="_blank" class="card-link p-4">
+    <h3 class="mb-2 font-bold text-gray-800">{title}</h3>
+    <p class="text-sm leading-[1.5] text-gray-400">{description}</p>
+    <div class={hasLinks ? "my-7" : "mt-7"}>
+      {skills.map((skill) => <span class="mr-2">{skill}</span>)}
+    </div>
+  </a>
+  {
+    hasLinks && (
+      <div class="nested-links px-4 text-sky-600 [&>*]:mr-10">
+        {links?.code && (
+          <a href={links.code} target="_blank" class="hover:text-sky-900">
+            コード
+          </a>
+        )}
+        {links?.design && (
+          <a href={links.design} target="_blank" class="hover:text-sky-900">
+            デザイン
+          </a>
+        )}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  /*
+    入れ子のリンク実装
+    @see https://zenn.dev/ixkaito/articles/nested-links-using-subgrid
+   */
+  .card {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .card-link {
+    grid-row: 1 / 6;
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: subgrid;
+  }
+
+  .nested-links {
+    grid-row: 4 / 5;
+    grid-column: 1;
+    pointer-events: none;
+
+    a {
+      pointer-events: auto;
+    }
+  }
+</style>
