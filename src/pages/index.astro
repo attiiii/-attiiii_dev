@@ -1,4 +1,5 @@
 ---
+import BlogCard from "@/components/card/BlogCard.astro";
 import PortfolioCard from "@components/card/PortfolioCard.astro";
 import Layout from "@layouts/Layout.astro";
 import SectionLayout from "@layouts/SectionLayout.astro";
@@ -7,7 +8,7 @@ import { PORTFOLIOS } from "@/constants";
 
 <Layout title="@attiiii_dev">
   <main
-    class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20 [&>*:not(:last-child)]:mb-12"
+    class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20 [&>*:not(:last-child)]:mb-14"
   >
     <section class="flex">
       <div class="flex flex-1 flex-col items-center justify-center">
@@ -34,6 +35,9 @@ import { PORTFOLIOS } from "@/constants";
       <div class="grid grid-cols-2 gap-5">
         {PORTFOLIOS.map((portfolio) => <PortfolioCard portfolio={portfolio} />)}
       </div>
+    </SectionLayout>
+    <SectionLayout title="Blog">
+      <BlogCard title="ブログタイトル" createdAt="1日前" />
     </SectionLayout>
   </main>
 </Layout>
