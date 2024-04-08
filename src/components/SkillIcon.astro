@@ -1,0 +1,24 @@
+---
+import CustomMicrocms from "@components/icons/CustomMicrocms.astro";
+import SkillIconsAstro from "@components/icons/SkillIconsAstro.astro";
+import SkillIconsCloudflare from "@components/icons/SkillIconsCloudflare.astro";
+import SkillIconsReact from "@components/icons/SkillIconsReact.astro";
+import SkillIconsTailwindCss from "@components/icons/SkillIconsTailwindCss.astro";
+
+interface Props {
+  skill: string;
+}
+
+const { skill } = Astro.props;
+---
+
+<div class="flex w-[60px] flex-col">
+  <span class="truncate text-center text-[12px] text-gray-800">
+    {skill}
+  </span>
+  {skill === "Astro" && <SkillIconsAstro width={60} height={60} />}
+  {skill === "microCMS" && <CustomMicrocms width={60} height={60} />}
+  {skill === "React" && <SkillIconsReact width={60} height={60} />}
+  {skill === "Cloudflare" && <SkillIconsCloudflare width={60} height={60} />}
+  {skill === "Tailwind CSS" && <SkillIconsTailwindCss width={60} height={60} />}
+</div>

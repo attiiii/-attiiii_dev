@@ -1,5 +1,6 @@
 ---
 import type { Portfolio } from "@/types";
+import SkillIcon from "../SkillIcon.astro";
 
 interface Props {
   portfolio: Portfolio;
@@ -14,8 +15,8 @@ const hasLinks = Object.keys(links || {}).length > 0;
   <a href={url} target="_blank" class="card-link p-4">
     <h3 class="mb-2 font-bold text-gray-800">{title}</h3>
     <p class="text-sm leading-[1.5] text-gray-400">{description}</p>
-    <div class={hasLinks ? "my-7" : "mt-7"}>
-      {skills.map((skill) => <span class="mr-2">{skill}</span>)}
+    <div class={"flex [&>*]:mr-4" + (hasLinks ? " my-7" : " mt-7")}>
+      {skills.map((skill) => <SkillIcon skill={skill} />)}
     </div>
   </a>
   {
