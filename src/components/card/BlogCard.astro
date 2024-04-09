@@ -1,4 +1,11 @@
 ---
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/ja";
+
+dayjs.locale("ja");
+dayjs.extend(relativeTime);
+
 interface Props {
   id: string;
   title: string;
@@ -14,7 +21,7 @@ const { id, title, createdAt } = Astro.props;
     <div
       class="absolute bottom-0 right-0 flex h-9 w-20 items-center justify-center text-sm text-gray-400"
     >
-      {createdAt}
+      {dayjs(createdAt).fromNow()}
     </div>
   </div>
 </a>
