@@ -1,17 +1,20 @@
 ---
 interface Props {
+  id: string;
   title: string;
   createdAt: string;
 }
 
-const { title, createdAt } = Astro.props;
+const { id, title, createdAt } = Astro.props;
 ---
 
-<div class="relative px-5 py-9 shadow-lg">
-  <span class="font-bold">{title}</span>
-  <div
-    class="absolute bottom-0 right-0 flex h-9 w-20 items-center justify-center text-sm text-gray-400"
-  >
-    {createdAt}
+<a href={"/blogs/" + id} class="block">
+  <div class="relative overflow-hidden rounded px-5 py-9 shadow-lg">
+    <span class="font-bold">{title}</span>
+    <div
+      class="absolute bottom-0 right-0 flex h-9 w-20 items-center justify-center text-sm text-gray-400"
+    >
+      {createdAt}
+    </div>
   </div>
-</div>
+</a>

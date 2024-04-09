@@ -3,7 +3,10 @@ import BlogCard from "@/components/card/BlogCard.astro";
 import PortfolioCard from "@components/card/PortfolioCard.astro";
 import Layout from "@layouts/Layout.astro";
 import SectionLayout from "@layouts/SectionLayout.astro";
+import { getBlogs } from "@/libs/microcms";
 import { PORTFOLIOS } from "@/constants";
+
+const response = await getBlogs({ fields: ["id", "title", "createdAt"] });
 ---
 
 <Layout title="@attiiii_dev">
@@ -37,7 +40,9 @@ import { PORTFOLIOS } from "@/constants";
       </div>
     </SectionLayout>
     <SectionLayout title="Blog">
-      <BlogCard title="ブログタイトル" createdAt="1日前" />
+      <div class="[&>*:not(:last-child)]:mb-5">
+        {response.contents.map((content) => <BlogCard {...content} />)}
+      </div>
     </SectionLayout>
   </main>
 </Layout>
