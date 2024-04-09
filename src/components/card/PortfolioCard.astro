@@ -2,11 +2,9 @@
 import type { Portfolio } from "@/types";
 import SkillIcon from "../SkillIcon.astro";
 
-interface Props {
-  portfolio: Portfolio;
-}
+type Props = Portfolio;
 
-const { title, description, url, skills, links } = Astro.props.portfolio;
+const { title, description, url, skills, links } = Astro.props;
 
 const hasLinks = Object.keys(links || {}).length > 0;
 ---

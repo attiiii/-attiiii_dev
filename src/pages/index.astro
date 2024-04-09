@@ -36,7 +36,7 @@ const response = await getBlogs({ fields: ["id", "title", "createdAt"] });
     </section>
     <SectionLayout title="Portfolio">
       <div class="grid grid-cols-2 gap-5">
-        {PORTFOLIOS.map((portfolio) => <PortfolioCard portfolio={portfolio} />)}
+        {PORTFOLIOS.map((portfolio) => <PortfolioCard {...portfolio} />)}
       </div>
     </SectionLayout>
     <SectionLayout title="Blog">
