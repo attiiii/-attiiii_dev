@@ -1,7 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getBlogs, getBlogDetail } from "@/libs/microcms";
+import { load } from "cheerio";
 import dayjs from "dayjs";
+import hljs from "highlight.js";
+import type { HighlightResult } from "highlight.js";
+import "highlight.js/styles/atom-one-dark.min.css";
 
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths() {
@@ -13,9 +17,28 @@ export async function getStaticPaths() {
   }));
 }
 
-//記事の詳細情報を取得
+// 記事の詳細情報を取得
 const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
+
+// コードにシンタックスハイライトを適用
+const $ = load(blog.content);
+$("pre code").each((_, elm) => {
+  let result: HighlightResult;
+  const language = $(elm).attr("class") || "";
+
+  if (language) {
+    result = hljs.highlight($(elm).text(), {
+      language: language.replace("language-", ""),
+    });
+  } else {
+    result = hljs.highlightAuto($(elm).text());
+  }
+
+  $(elm).html(result.value);
+  $(elm).addClass("hljs");
+});
+blog.content = $.html();
 ---
 
 <Layout title={blog.title + " | @attiiii_dev"}>
@@ -77,11 +100,14 @@ const blog = await getBlogDetail(blogId as string);
     }
     pre {
       font-size: 0.825rem;
-      color: white;
       background-color: rgb(15 23 42);
       margin-top: 1.25rem;
       margin-bottom: 1.25rem;
+    }
+    pre code {
+      display: block;
       padding: 1.125rem;
+      overflow-x: auto;
     }
     h1,
     h2 {
