@@ -1,10 +1,12 @@
 ---
+import SkillSet from "@/components/SkillSet.astro";
 import Layout from "@/layouts/Layout.astro";
+import SectionLayout from "@/layouts/SectionLayout.astro";
 ---
 
 <Layout title="Profile | @attiiii_dev">
   <main
-    class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20 [&>*:not(:last-child)]:mb-14"
+    class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20 [&>*:not(:last-child)]:mb-20"
   >
     <section class="leading-[1.9] text-gray-800 [&>*:not(:last-child)]:mb-7">
       <div class="flex items-center">
@@ -39,5 +41,9 @@ import Layout from "@/layouts/Layout.astro";
         </ul>
       </div>
     </section>
+    <SectionLayout title="Skill Set">
+      <p class="mb-4 text-gray-400">※2024年4月時点</p>
+      <SkillSet />
+    </SectionLayout>
   </main>
 </Layout>
