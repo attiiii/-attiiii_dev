@@ -11,7 +11,7 @@ const response = await getBlogs({ fields: ["id", "title", "createdAt"] });
 
 <Layout title="@attiiii_dev">
   <main
-    class="mx-auto mb-[15rem] mt-3 max-w-[1440px] px-20 [&>*:not(:last-child)]:mb-14"
+    class="mx-auto mb-[15rem] mt-20 max-w-[1440px] px-1 md:mt-3 lg:px-20 [&>*:not(:last-child)]:mb-14"
   >
     <section class="flex">
       <div class="flex flex-1 flex-col items-center justify-center">
@@ -20,7 +20,7 @@ const response = await getBlogs({ fields: ["id", "title", "createdAt"] });
           <p>個人運用のポートフォリオ＋ブログサイトです。</p>
           <p>著者についてはプロフィールをご確認ください。</p>
         </div>
-        <a href="/profile">
+        <a href="/profile" class="hidden md:block">
           <div
             class="flex h-[2.25rem] items-center rounded-full bg-slate-800 px-4 font-bold text-white"
           >
@@ -28,14 +28,14 @@ const response = await getBlogs({ fields: ["id", "title", "createdAt"] });
           </div>
         </a>
       </div>
-      <div class="flex flex-1 justify-center">
+      <div class="hidden flex-1 justify-center md:flex">
         <div class="max-w-[420px]">
           <img src="/images/laptop.jpg" alt="サイトイメージ" class="w-full" />
         </div>
       </div>
     </section>
     <SectionLayout title="Portfolio">
-      <div class="grid grid-cols-2 gap-5">
+      <div class="grid gap-5 md:grid-cols-2">
         {PORTFOLIOS.map((portfolio) => <PortfolioCard {...portfolio} />)}
       </div>
     </SectionLayout>
