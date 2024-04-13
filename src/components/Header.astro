@@ -4,9 +4,11 @@ import BiTwitterX from "@/components/icons/BiTwitterX.astro";
 ---
 
 <header class="bg-white text-xl font-medium">
-  <div class="mx-auto flex max-w-[1440px] justify-between px-20 py-9">
-    <div class="flex items-center [&>*]:mr-12">
-      <a href="/"> @attiiii_dev </a>
+  <div
+    class="mx-auto flex max-w-[1440px] flex-col items-center md:flex-row md:justify-between md:px-20 md:py-9"
+  >
+    <div class="flex items-center py-8 md:py-0">
+      <a href="/" class="mr-12 text-2xl md:text-xl"> @attiiii_dev </a>
       <div class="flex items-center text-gray-400">
         <a href="https://twitter.com/attiiii_dev" target="_blank" class="p-2">
           <BiTwitterX />
@@ -16,8 +18,8 @@ import BiTwitterX from "@/components/icons/BiTwitterX.astro";
         </a>
       </div>
     </div>
-    <nav class="flex items-center [&>*]:ml-12">
-      <a href="/blogs">Blog</a>
+    <nav class="flex items-center">
+      <a href="/blogs" class="mr-12">Blog</a>
       <a href="/profile">Profile</a>
     </nav>
   </div>
